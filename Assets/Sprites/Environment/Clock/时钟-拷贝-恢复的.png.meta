@@ -1,0 +1,400 @@
+fileFormatVersion: 2
+guid: 508c7721ba41d084f94b22ddd340f5c5
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 175
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: big_houpin
+      rect:
+        serializedVersion: 2
+        x: 1207
+        y: 1625
+        width: 92
+        height: 333
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffe98d8101ab11642886c41c1bc3edec
+      internalID: -2042782864
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: big_minutepin
+      rect:
+        serializedVersion: 2
+        x: 1359
+        y: 1625
+        width: 161
+        height: 453
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 525f2540350f55648bec2b986b74c93b
+      internalID: -371430084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u65F6\u949F-\u62F7\u8D1D-\u6062\u590D\u7684_2"
+      rect:
+        serializedVersion: 2
+        x: 1938
+        y: 1791
+        width: 120
+        height: 435
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3e2688584dfb2f4789333d691303363
+      internalID: 1600693710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u65F6\u949F-\u62F7\u8D1D-\u6062\u590D\u7684_3"
+      rect:
+        serializedVersion: 2
+        x: 2132
+        y: 1719
+        width: 166
+        height: 612
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cda74ec1a184cb40814c2fa00d29313
+      internalID: -636381199
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bigger_hourpin
+      rect:
+        serializedVersion: 2
+        x: 2517
+        y: 1845
+        width: 118
+        height: 435
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 917016371d40e6f43b15f4452a3e7f4d
+      internalID: -645760151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bigger_minutepin
+      rect:
+        serializedVersion: 2
+        x: 2703
+        y: 1772
+        width: 194
+        height: 610
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 274c6cf5b35521e40b1c93ffd8f6ca95
+      internalID: -1042905948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: small_pin
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 1359
+        width: 54
+        height: 182
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 529e4dbb9c2b2a04b94fac8fbee435e6
+      internalID: 1921253276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: middle_pin
+      rect:
+        serializedVersion: 2
+        x: 740
+        y: 1464
+        width: 90
+        height: 326
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b240b0bf26277f544a5be963422d1c49
+      internalID: 578992461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u65F6\u949F-\u62F7\u8D1D-\u6062\u590D\u7684_8"
+      rect:
+        serializedVersion: 2
+        x: 1131
+        y: 617
+        width: 960
+        height: 960
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dae49dc19785a94980f33f329214623
+      internalID: 1194596624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u65F6\u949F-\u62F7\u8D1D-\u6062\u590D\u7684_9"
+      rect:
+        serializedVersion: 2
+        x: 2211
+        y: 395
+        width: 1257
+        height: 1257
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7d3e6e31d75b354b85ec30d4af0528a
+      internalID: 960650478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u65F6\u949F-\u62F7\u8D1D-\u6062\u590D\u7684_10"
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 917
+        width: 375
+        height: 374
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61633068b2f3435428d32448000d46a1
+      internalID: -1611358825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u65F6\u949F-\u62F7\u8D1D-\u6062\u590D\u7684_11"
+      rect:
+        serializedVersion: 2
+        x: 504
+        y: 799
+        width: 614
+        height: 611
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3af132e685192743af4c097ca253106
+      internalID: 463814327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\u65F6\u949F-\u62F7\u8D1D-\u6062\u590D\u7684_12"
+      rect:
+        serializedVersion: 2
+        x: 2627
+        y: 224
+        width: 615
+        height: 59
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b81ecbfb092692b4781cf11a203a204f
+      internalID: 1473813382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      big_houpin: -2042782864
+      big_minutepin: -371430084
+      bigger_hourpin: -645760151
+      bigger_minutepin: -1042905948
+      middle_pin: 578992461
+      small_pin: 1921253276
+      "\u65F6\u949F-\u62F7\u8D1D-\u6062\u590D\u7684_10": -1611358825
+      "\u65F6\u949F-\u62F7\u8D1D-\u6062\u590D\u7684_11": 463814327
+      "\u65F6\u949F-\u62F7\u8D1D-\u6062\u590D\u7684_12": 1473813382
+      "\u65F6\u949F-\u62F7\u8D1D-\u6062\u590D\u7684_2": 1600693710
+      "\u65F6\u949F-\u62F7\u8D1D-\u6062\u590D\u7684_3": -636381199
+      "\u65F6\u949F-\u62F7\u8D1D-\u6062\u590D\u7684_8": 1194596624
+      "\u65F6\u949F-\u62F7\u8D1D-\u6062\u590D\u7684_9": 960650478
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
