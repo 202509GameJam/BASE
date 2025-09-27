@@ -92,12 +92,12 @@ public class BoundaryManager : MonoBehaviour
             }
 
             // 调试信息
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
             if (!Application.isPlaying)
             {
                 Debug.Log($"左边界更新到: {_leftBoundaryX}");
             }
-#endif
+#endif*/
         }
 
         // 更新右边界位置和大小
@@ -111,12 +111,12 @@ public class BoundaryManager : MonoBehaviour
             }
 
             // 调试信息
-#if UNITY_EDITOR
+/*#if UNITY_EDITOR
             if (!Application.isPlaying)
             {
                 Debug.Log($"右边界更新到: {_rightBoundaryX}");
             }
-#endif
+#endif*/
         }
     }
 
