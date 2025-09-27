@@ -349,11 +349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3278483074298209116}
   serializedVersion: 2
-<<<<<<< Updated upstream:Assets/Perfabs/Clock_small.prefab
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-=======
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
->>>>>>> Stashed changes:Assets/Perfabs/Clock_2.prefab
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -373,11 +369,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 347e8766a1ba27047b76354f2c43560e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-<<<<<<< Updated upstream:Assets/Perfabs/Clock_small.prefab
   rotationSpeed: 60
-=======
-  rotationSpeed: 30
->>>>>>> Stashed changes:Assets/Perfabs/Clock_2.prefab
   startAngle: 0
   randomStartAngle: 0
 --- !u!1 &5084229527893053360
