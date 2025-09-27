@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     private Vector3 lastSafePosition;
     private bool isRespawning = false;
 
+    [Header("物理设置")]
+    public PhysicsMaterial2D playerPhysicsMaterial; // 新增：玩家物理材质
+
     private float movementThreshold = 0.01f;
     private float minMovementTime = 0.5f;
     private float movementStartTime;
@@ -34,9 +37,27 @@ public class PlayerController : MonoBehaviour
         lastPosition = rb.position;
         lastSafePosition = transform.position;
 
+        // 新增：应用玩家物理材质
+        ApplyPlayerPhysicsMaterial();
+
         if (TimeManager.Instance != null)
         {
             TimeManager.Instance.SetPlayerMoving(false);
+        }
+    }
+
+    // 新增：应用物理材质方法
+    void ApplyPlayerPhysicsMaterial()
+    {
+        CircleCollider2D playerCollider = GetComponent<CircleCollider2D>();
+        if (playerCollider != null && playerPhysicsMaterial != null)
+        {
+            playerCollider.sharedMaterial = playerPhysicsMaterial;
+            Debug.Log("已应用玩家物理材质，摩擦系数: " + playerPhysicsMaterial.friction);
+        }
+        else
+        {
+            Debug.LogWarning("玩家碰撞器或物理材质未设置！");
         }
     }
 
@@ -215,12 +236,14 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
+        // 简化：让物理引擎处理斜坡滑动
         if (Mathf.Abs(horizontalInput) > 0.1f)
         {
             rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
         }
         else
         {
+            // 允许物理引擎自然减速（摩擦力会起作用）
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
     }
@@ -283,6 +306,23 @@ public class PlayerController : MonoBehaviour
         );
 
         isGrounded = colliders.Length > 0;
+
+        // 简化的斜坡检测（仅用于调试）
+        if (isGrounded)
+        {
+            CheckSlopeFeedback();
+        }
+    }
+
+    // 新增：简单的斜坡反馈（可选）
+    void CheckSlopeFeedback()
+    {
+        // 检测是否在陡峭斜坡上滑动
+        if (Mathf.Abs(rb.velocity.x) > 2f && Mathf.Abs(horizontalInput) < 0.1f)
+        {
+            // 玩家在没有输入的情况下快速滑动，可能是在陡坡上
+            // 可以在这里添加滑动音效或粒子效果
+        }
     }
 
     void OnDrawGizmos()
