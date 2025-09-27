@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 20218103445772724}
   - component: {fileID: 73738863562808165}
   m_Layer: 0
-  m_Name: Clock_1
+  m_Name: Clock_1 1
   m_TagString: Clock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
