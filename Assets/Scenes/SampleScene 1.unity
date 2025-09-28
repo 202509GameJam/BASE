@@ -3846,7 +3846,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2134159277}
-  - component: {fileID: 2134159276}
   - component: {fileID: 2134159278}
   m_Layer: 0
   m_Name: GameProgressTracker
@@ -3855,18 +3854,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &2134159276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2134159275}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f9dcd73e7f703974fb0ae4ab8c4e458b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2134159277
 Transform:
   m_ObjectHideFlags: 0

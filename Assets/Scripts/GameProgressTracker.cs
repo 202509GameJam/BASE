@@ -9,7 +9,7 @@ public class GameProgressTracker : MonoBehaviour
     public float startXPosition = 0f;
 
     [Header("游戏边界")]
-    public float rightBoundary = 50f; // 右边界，到达即胜利
+    public float rightBoundary = 174f; // 右边界，到达即胜利
 
     private PlayerController player;
 
