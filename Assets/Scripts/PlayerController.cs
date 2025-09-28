@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     public bool isGrounded;
+    public bool isJumping;
     private float horizontalInput;
     private Vector2 lastPosition;
     private bool wasMoving = false;
@@ -240,12 +241,18 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            isJumping = true;
             if (TimeManager.Instance != null)
             {
                 TimeManager.Instance.SetPlayerMoving(true);
                 movementStartTime = Time.time;
                 isActuallyMoving = true;
             }
+        }
+
+        if(isJumping || isGrounded)
+        {
+            isJumping = false;
         }
     }
 

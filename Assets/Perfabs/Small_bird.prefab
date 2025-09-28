@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 7722162729923390346}
   - component: {fileID: 846330912558440650}
   - component: {fileID: 2557564519131230463}
+  - component: {fileID: 2059778383617698665}
   m_Layer: 0
   m_Name: Small_bird
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7722162729923390346
 Transform:
   m_ObjectHideFlags: 0
@@ -106,3 +107,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2059778383617698665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7206925979344954912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42f5d39a7d8a9074d8450e2730e4fdc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

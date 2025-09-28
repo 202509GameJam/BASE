@@ -11,13 +11,14 @@ GameObject:
   - component: {fileID: 8639545117464600619}
   - component: {fileID: 418094839301704019}
   - component: {fileID: 5915510502128815717}
+  - component: {fileID: 3316557787899791511}
   m_Layer: 0
   m_Name: Old_bird
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8639545117464600619
 Transform:
   m_ObjectHideFlags: 0
@@ -106,3 +107,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3316557787899791511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5646121993140452725}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22d9c5e70e085af4199d243becd3de74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

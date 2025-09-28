@@ -114,6 +114,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   jumpForce: 18
+  isGrounded: 0
+  isJumping: 0
   groundCheckRadius: 0.6
   groundLayer:
     serializedVersion: 2
@@ -205,10 +207,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Middle_bird
       objectReference: {fileID: 0}
-    - target: {fileID: 2252281071996522115, guid: 226e54982af05be488c833c36c775acc, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -230,10 +228,6 @@ PrefabInstance:
     - target: {fileID: 7206925979344954912, guid: d8f243eb1c4b73b4e8b495eea2ff846d, type: 3}
       propertyPath: m_Name
       value: Small_bird
-      objectReference: {fileID: 0}
-    - target: {fileID: 7206925979344954912, guid: d8f243eb1c4b73b4e8b495eea2ff846d, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7722162729923390346, guid: d8f243eb1c4b73b4e8b495eea2ff846d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -296,10 +290,6 @@ PrefabInstance:
     - target: {fileID: 5646121993140452725, guid: e13937bbb0b8f3a46996cdf7fe27a79c, type: 3}
       propertyPath: m_Name
       value: Old_bird
-      objectReference: {fileID: 0}
-    - target: {fileID: 5646121993140452725, guid: e13937bbb0b8f3a46996cdf7fe27a79c, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8639545117464600619, guid: e13937bbb0b8f3a46996cdf7fe27a79c, type: 3}
       propertyPath: m_LocalPosition.x

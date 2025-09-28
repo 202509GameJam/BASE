@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAnimaitonM : MonoBehaviour
+public class PlayerAnimaitonO : MonoBehaviour
 {
     PlayerController controller;
     Rigidbody2D rb;
