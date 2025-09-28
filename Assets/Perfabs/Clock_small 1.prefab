@@ -371,7 +371,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 60
   startAngle: 0
-  randomStartAngle: 0
+  randomStartAngle: 1
 --- !u!1 &5084229527893053360
 GameObject:
   m_ObjectHideFlags: 0

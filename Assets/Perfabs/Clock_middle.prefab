@@ -209,7 +209,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 30
   startAngle: 0
-  randomStartAngle: 0
+  randomStartAngle: 1
 --- !u!1 &5084229527893053360
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +553,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_Sprite: {fileID: 463814327, guid: 508c7721ba41d084f94b22ddd340f5c5, type: 3}
   m_Color: {r: 0.7075472, g: 0.6841848, b: 0.6841848, a: 1}
   m_FlipX: 0
