@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce = 15f;
 
     private Rigidbody2D rb;
-    private bool isGrounded;
+    public bool isGrounded;
     private float horizontalInput;
     private Vector2 lastPosition;
     private bool wasMoving = false;

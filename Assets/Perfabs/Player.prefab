@@ -121,6 +121,7 @@ MonoBehaviour:
   groundCheckPoint: {fileID: 8409057158859258969}
   deathY: -20
   playerPhysicsMaterial: {fileID: 0}
+  startingZoneID: 0
 --- !u!1 &1402670885509967707
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +207,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2252281071996522115, guid: 226e54982af05be488c833c36c775acc, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -232,7 +233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7206925979344954912, guid: d8f243eb1c4b73b4e8b495eea2ff846d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7722162729923390346, guid: d8f243eb1c4b73b4e8b495eea2ff846d, type: 3}
       propertyPath: m_LocalPosition.x
