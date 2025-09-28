@@ -3,9 +3,14 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController Instance;
+
     [Header("移动设置")]
     public float moveSpeed = 5f;
     public float jumpForce = 15f;
+
+    [Header("游戏边界")]
+    public float rightBoundary = 50f; // 右边界，到达即游戏胜利
 
     private Rigidbody2D rb;
     public bool isGrounded;
@@ -35,6 +40,19 @@ public class PlayerController : MonoBehaviour
     private int currentZoneID = 0;
     private Vector3 currentRespawnPoint;
     private bool hasCustomRespawnPoint = false;
+
+    void Awake()
+    {
+        // 设置静态实例
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
@@ -69,13 +87,13 @@ public class PlayerController : MonoBehaviour
 
     public void SetRespawnPoint(Vector3 position, int zoneID)
     {
-        // 修改：只有当新区域ID大于当前区域ID时才更新复活点
+        // 只有当新区域ID大于当前区域ID时才更新复活点
         if (zoneID > currentZoneID)
         {
             currentRespawnPoint = position;
             currentZoneID = zoneID;
             hasCustomRespawnPoint = true;
-            ShowRespawnPointFeedback();
+            //ShowRespawnPointFeedback();
         }
         else
         {
@@ -116,11 +134,16 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        // 只有在游戏进行中才处理输入和移动
+        if (GameManager.Instance != null && !GameManager.Instance.IsGamePlaying())
+            return;
+
         CheckGrounded();
         HandleInput();
         CheckMovementStatus();
         HandleJump();
         CheckScreenBounds();
+        CheckRightBoundary();
     }
 
     void CheckScreenBounds()
@@ -131,6 +154,20 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("玩家掉出屏幕，开始复活");
             Respawn();
+        }
+    }
+
+    // 检查右边界
+    void CheckRightBoundary()
+    {
+        if (transform.position.x >= rightBoundary)
+        {
+            // 到达右边界，游戏胜利
+            if (GameManager.Instance != null)
+            {
+                Debug.Log($"到达右边界 {rightBoundary}，游戏胜利");
+                GameManager.Instance.GameWin(); // 修正：改为GameWin
+            }
         }
     }
 
@@ -215,6 +252,10 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        // 只有在游戏进行中才处理物理移动
+        if (GameManager.Instance != null && !GameManager.Instance.IsGamePlaying())
+            return;
+
         HandleMovement();
     }
 
@@ -310,5 +351,10 @@ public class PlayerController : MonoBehaviour
         // 绘制复活点安全检测线
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(currentRespawnPoint, currentRespawnPoint + Vector3.down * 5f);
+
+        // 绘制右边界
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(new Vector3(rightBoundary, -10, 0), new Vector3(rightBoundary, 10, 0));
+        Gizmos.DrawWireCube(new Vector3(rightBoundary, 0, 0), new Vector3(0.2f, 20f, 0.1f));
     }
 }

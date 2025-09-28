@@ -67,12 +67,12 @@ public class HandFrictionController : MonoBehaviour
     }
 
     // 调试信息
-    void OnGUI()
+    /*void OnGUI()
     {
         if (Application.isPlaying)
         {
             GUI.Label(new Rect(10, 60, 300, 20),
                      $"指针角度: {currentAngle:F1}°, 摩擦系数: {handCollider.sharedMaterial.friction:F2}");
         }
-    }
+    }*/
 }
