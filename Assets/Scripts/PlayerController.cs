@@ -20,24 +20,27 @@ public class PlayerController : MonoBehaviour
 
     [Header("屏幕边界设置")]
     public float deathY = -10f;
-    private Vector3 lastSafePosition;
     private bool isRespawning = false;
 
     [Header("物理设置")]
-    public PhysicsMaterial2D playerPhysicsMaterial; // 新增：玩家物理材质
+    public PhysicsMaterial2D playerPhysicsMaterial;
 
     private float movementThreshold = 0.01f;
     private float minMovementTime = 0.5f;
     private float movementStartTime;
     private bool isActuallyMoving = false;
 
+    [Header("复活点系统")]
+    public int startingZoneID = 0;
+    private int currentZoneID = 0;
+    private Vector3 currentRespawnPoint;
+    private bool hasCustomRespawnPoint = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         lastPosition = rb.position;
-        lastSafePosition = transform.position;
-
-        // 新增：应用玩家物理材质
+        InitializeRespawnSystem();
         ApplyPlayerPhysicsMaterial();
 
         if (TimeManager.Instance != null)
@@ -46,18 +49,68 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // 新增：应用物理材质方法
+    void InitializeRespawnSystem()
+    {
+        currentZoneID = startingZoneID;
+
+        if (RespawnManager.Instance != null)
+        {
+            currentRespawnPoint = RespawnManager.Instance.GetRespawnPosition(startingZoneID);
+            hasCustomRespawnPoint = true;
+        }
+        else
+        {
+            currentRespawnPoint = transform.position;
+            hasCustomRespawnPoint = false;
+        }
+
+        Debug.Log($"初始化复活点: 区域{currentZoneID}, 位置{currentRespawnPoint}");
+    }
+
+    public void SetRespawnPoint(Vector3 position, int zoneID)
+    {
+        // 修改：只有当新区域ID大于当前区域ID时才更新复活点
+        if (zoneID > currentZoneID)
+        {
+            currentRespawnPoint = position;
+            currentZoneID = zoneID;
+            hasCustomRespawnPoint = true;
+            ShowRespawnPointFeedback();
+        }
+        else
+        {
+            Debug.Log($"保持当前复活点区域{currentZoneID}，忽略区域{zoneID}");
+        }
+    }
+
+    void ShowRespawnPointFeedback()
+    {
+        Debug.Log($"复活点已更新: 区域{currentZoneID}, 位置{currentRespawnPoint}");
+    }
+
+    public int GetCurrentZoneID()
+    {
+        return currentZoneID;
+    }
+
+    // 新增方法：手动重置复活点（用于关卡重置等）
+    public void ResetRespawnPoint(int zoneID)
+    {
+        if (RespawnManager.Instance != null)
+        {
+            currentRespawnPoint = RespawnManager.Instance.GetRespawnPosition(zoneID);
+            currentZoneID = zoneID;
+            hasCustomRespawnPoint = true;
+            Debug.Log($"手动重置复活点到区域{zoneID}");
+        }
+    }
+
     void ApplyPlayerPhysicsMaterial()
     {
         CircleCollider2D playerCollider = GetComponent<CircleCollider2D>();
         if (playerCollider != null && playerPhysicsMaterial != null)
         {
             playerCollider.sharedMaterial = playerPhysicsMaterial;
-            Debug.Log("已应用玩家物理材质，摩擦系数: " + playerPhysicsMaterial.friction);
-        }
-        else
-        {
-            Debug.LogWarning("玩家碰撞器或物理材质未设置！");
         }
     }
 
@@ -79,33 +132,19 @@ public class PlayerController : MonoBehaviour
             Debug.Log("玩家掉出屏幕，开始复活");
             Respawn();
         }
-
-        if (isGrounded)
-        {
-            UpdateSafePosition();
-        }
-    }
-
-    void UpdateSafePosition()
-    {
-        if (isGrounded && IsPositionSafe(transform.position))
-        {
-            lastSafePosition = transform.position;
-            Debug.Log("更新安全位置: " + lastSafePosition);
-        }
-    }
-
-    bool IsPositionSafe(Vector3 position)
-    {
-        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 2f, groundLayer);
-        return hit.collider != null;
     }
 
     void Respawn()
     {
         isRespawning = true;
-        Vector3 safeRespawnPosition = FindSafeRespawnPosition();
-        transform.position = safeRespawnPosition;
+
+        // 直接使用绑定的复活点
+        Vector3 respawnPosition = currentRespawnPoint;
+
+        // 确保复活点安全（在平台上）
+        respawnPosition = EnsureSafeRespawnPosition(respawnPosition);
+
+        transform.position = respawnPosition;
         rb.velocity = Vector2.zero;
         rb.angularVelocity = 0f;
 
@@ -116,103 +155,53 @@ public class PlayerController : MonoBehaviour
         }
 
         StartCoroutine(EnableControlAfterRespawn());
+
+        Debug.Log($"在区域{currentZoneID}复活, 位置: {respawnPosition}");
     }
 
-    Vector3 FindSafeRespawnPosition()
+    Vector3 EnsureSafeRespawnPosition(Vector3 position)
     {
-        Vector3[] candidatePositions = {
-            lastSafePosition,
-            FindNearestClockCenter(),
-            FindNearestPlatformPosition(),
-            Vector3.zero
-        };
-
-        foreach (Vector3 candidate in candidatePositions)
+        // 检查复活点是否安全（在平台上）
+        RaycastHit2D hit = Physics2D.Raycast(position, Vector2.down, 5f, groundLayer);
+        if (hit.collider != null)
         {
-            if (IsPositionSafe(candidate))
-            {
-                Debug.Log("找到安全复活位置: " + candidate);
-                return candidate;
-            }
+            // 如果复活点在平台上方，直接使用
+            return position;
         }
-
-        return CreateSafePosition();
-    }
-
-    Vector3 FindNearestClockCenter()
-    {
-        GameObject[] clocks = GameObject.FindGameObjectsWithTag("Clock");
-        Vector3 playerPosition = transform.position;
-        Vector3 nearestClock = Vector3.zero;
-        float nearestDistance = Mathf.Infinity;
-
-        foreach (GameObject clock in clocks)
+        else
         {
-            float distance = Vector3.Distance(playerPosition, clock.transform.position);
-            if (distance < nearestDistance)
+            // 如果复活点不在平台上，在复活点周围寻找安全位置
+            for (int i = 0; i < 8; i++)
             {
-                nearestDistance = distance;
-                nearestClock = clock.transform.position;
+                float angle = i * 45f * Mathf.Deg2Rad;
+                Vector3 testPosition = position + new Vector3(
+                    Mathf.Cos(angle) * 2f,
+                    Mathf.Sin(angle) * 2f,
+                    0
+                );
+
+                hit = Physics2D.Raycast(testPosition, Vector2.down, 5f, groundLayer);
+                if (hit.collider != null)
+                {
+                    Debug.Log($"在复活点附近找到安全位置: {testPosition}");
+                    return testPosition + Vector3.up * 0.5f; // 稍微抬高一点
+                }
             }
+
+            // 如果周围都找不到，返回原始位置（最后的手段）
+            Debug.LogWarning("无法在复活点周围找到安全位置，使用原始位置");
+            return position;
         }
-
-        return nearestClock;
-    }
-
-    Vector3 FindNearestPlatformPosition()
-    {
-        Collider2D[] platforms = Physics2D.OverlapCircleAll(transform.position, 20f, groundLayer);
-        Vector3 nearestPlatform = Vector3.zero;
-        float nearestDistance = Mathf.Infinity;
-
-        foreach (Collider2D platform in platforms)
-        {
-            Vector3 platformTop = new Vector3(
-                platform.bounds.center.x,
-                platform.bounds.max.y + 0.5f,
-                platform.bounds.center.z
-            );
-
-            float distance = Vector3.Distance(transform.position, platformTop);
-            if (distance < nearestDistance)
-            {
-                nearestDistance = distance;
-                nearestPlatform = platformTop;
-            }
-        }
-
-        return nearestPlatform;
-    }
-
-    Vector3 CreateSafePosition()
-    {
-        for (int i = 0; i < 10; i++)
-        {
-            Vector3 testPosition = lastSafePosition + new Vector3(
-                Random.Range(-5f, 5f),
-                Random.Range(0f, 5f),
-                0
-            );
-
-            if (IsPositionSafe(testPosition))
-            {
-                Debug.Log("创建安全位置: " + testPosition);
-                return testPosition;
-            }
-        }
-
-        Debug.LogError("无法找到安全位置，返回场景中心");
-        return Vector3.zero;
     }
 
     System.Collections.IEnumerator EnableControlAfterRespawn()
     {
         yield return new WaitForSeconds(0.1f);
 
+        // 确保玩家站在地面上
         if (!isGrounded)
         {
-            Debug.LogWarning("复活后位置不安全，尝试调整");
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 3; i++)
             {
                 transform.position += Vector3.up * 0.5f;
                 yield return new WaitForSeconds(0.1f);
@@ -236,14 +225,12 @@ public class PlayerController : MonoBehaviour
 
     void HandleMovement()
     {
-        // 简化：让物理引擎处理斜坡滑动
         if (Mathf.Abs(horizontalInput) > 0.1f)
         {
             rb.velocity = new Vector2(horizontalInput * moveSpeed, rb.velocity.y);
         }
         else
         {
-            // 允许物理引擎自然减速（摩擦力会起作用）
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
     }
@@ -306,23 +293,6 @@ public class PlayerController : MonoBehaviour
         );
 
         isGrounded = colliders.Length > 0;
-
-        // 简化的斜坡检测（仅用于调试）
-        if (isGrounded)
-        {
-            CheckSlopeFeedback();
-        }
-    }
-
-    // 新增：简单的斜坡反馈（可选）
-    void CheckSlopeFeedback()
-    {
-        // 检测是否在陡峭斜坡上滑动
-        if (Mathf.Abs(rb.velocity.x) > 2f && Mathf.Abs(horizontalInput) < 0.1f)
-        {
-            // 玩家在没有输入的情况下快速滑动，可能是在陡坡上
-            // 可以在这里添加滑动音效或粒子效果
-        }
     }
 
     void OnDrawGizmos()
@@ -333,7 +303,12 @@ public class PlayerController : MonoBehaviour
             Gizmos.DrawWireSphere(groundCheckPoint.position, groundCheckRadius);
         }
 
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireCube(lastSafePosition, new Vector3(0.5f, 0.5f, 0.5f));
+        // 绘制当前复活点
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawWireCube(currentRespawnPoint, new Vector3(0.8f, 0.8f, 0.8f));
+
+        // 绘制复活点安全检测线
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(currentRespawnPoint, currentRespawnPoint + Vector3.down * 5f);
     }
 }
