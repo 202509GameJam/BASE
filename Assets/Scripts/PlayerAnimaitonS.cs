@@ -9,6 +9,7 @@ public class PlayerAnimaitonS : MonoBehaviour
     Animator anim;
     private SpriteRenderer spriteRenderer;
     private float moveInput;
+    CharacterAudio characterAudio;
 
     int groundParamID;
     int lookParamID;
@@ -34,6 +35,7 @@ public class PlayerAnimaitonS : MonoBehaviour
         anim = GetComponent<Animator>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+        characterAudio = GetComponent<CharacterAudio>();
 
         ResetTimer();
     }
@@ -55,7 +57,7 @@ public class PlayerAnimaitonS : MonoBehaviour
         else
             anim.SetBool("isWalking", false);
 
-        if (controller.isGrounded && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && controller.isGrounded)
         {
             anim.SetTrigger("isJumping"); // 播放起跳瞬间的动画
         }
