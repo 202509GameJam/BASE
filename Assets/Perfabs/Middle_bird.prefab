@@ -168,7 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93b3bdd88f5400f46a699b4bae4b5083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  footstepClips: []
-  jumpClip: {fileID: 0}
-  landClip: {fileID: 0}
-  transClip: {fileID: 0}
+  footstepClips:
+  - {fileID: 8300000, guid: ca48d6405a3eb044592a9c1ced024770, type: 3}
+  jumpClip: {fileID: 8300000, guid: 4c9f37cc46fb2554c9721031f52be710, type: 3}
+  landClip: {fileID: 8300000, guid: 785638e8a5d1a274589e799795a1a00a, type: 3}
+  transClip: {fileID: 8300000, guid: bbcbdc8215b50364091456f0bb27132d, type: 3}
