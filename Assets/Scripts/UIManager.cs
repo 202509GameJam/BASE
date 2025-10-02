@@ -48,9 +48,9 @@ public class UIManager : MonoBehaviour
         if (gameWinPanel != null) gameWinPanel.SetActive(false);
 
         // 重置UI显示
-        if (distanceText != null) distanceText.text = "距离: 0.0m";
+        if (distanceText != null) distanceText.text = "Distance: 0.0m";
         if (timeText != null && TimeManager.Instance != null)
-            timeText.text = $"时间: {TimeManager.Instance.GetFormattedTime()}";
+            timeText.text = $"Time: {TimeManager.Instance.GetFormattedTime()}";
         if (progressSlider != null) progressSlider.value = 0f;
     }
 
@@ -79,13 +79,13 @@ public class UIManager : MonoBehaviour
         if (distanceText != null && GameProgressTracker.Instance != null)
         {
             float distance = GameProgressTracker.Instance.GetTraveledDistance();
-            distanceText.text = $"距离: {distance:F1}m";
+            distanceText.text = $"Distance: {distance:F1}m";
         }
 
         // 更新时间显示
         if (timeText != null && TimeManager.Instance != null)
         {
-            timeText.text = $"时间: {TimeManager.Instance.GetFormattedTime()}";
+            timeText.text = $"Time: {TimeManager.Instance.GetFormattedTime()}";
         }
 
         // 更新进度条
@@ -103,7 +103,7 @@ public class UIManager : MonoBehaviour
             gameOverPanel.SetActive(true);
             if (gameOverDistanceText != null)
             {
-                gameOverDistanceText.text = $"移动距离: {distance:F1}m";
+                gameOverDistanceText.text = $"Distance: {distance:F1}m";
             }
 
             // 确保按钮可用
@@ -119,7 +119,7 @@ public class UIManager : MonoBehaviour
             gameWinPanel.SetActive(true);
             if (gameWinDistanceText != null)
             {
-                gameWinDistanceText.text = $"移动距离: {distance:F1}m";
+                gameWinDistanceText.text = $"Distance: {distance:F1}m";
             }
 
             // 确保按钮可用
